@@ -13,8 +13,9 @@ class Product extends Model {
     parent::boot();
 
     static::creating(function ($product) {
-        $product->articul = str_pad(Product::max('id') + 1, 6, '1', STR_PAD_LEFT);
-    });
+    $nextId = Product::max('id') + 1;
+    $product->articul = str_pad($nextId, 6, '0', STR_PAD_LEFT);
+});
 }
 
 }

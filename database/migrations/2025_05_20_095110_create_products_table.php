@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('manufactured');
             $table->text('description');
-            $table->decimal('newprice', 10, 2);
+            $table->decimal('newprice', 10);
             $table->boolean('isfavorite')->default(false);
-            $table->decimal('oldprice', 10, 2)->nullable();
+            $table->decimal('oldprice', 10)->nullable();
             $table->timestamps();
         });
     }
