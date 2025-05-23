@@ -15,17 +15,22 @@ class BasketController extends Controller
      * Получить корзину текущего пользователя
      */
     public function index()
-    {
-        $user = Auth::user();
-        $basketItems = Basket::with('product')
-            ->where('user_id', $user->id)
-            ->get();
-            
-        return response()->json([
-            'items' => $basketItems,
-            'total' => $basketItems->sum('total_price')
-        ]);
+{
+    $user = Auth::user();
+    
+    if (!$user) {
+        return response()->json(['error' => 'Unauthorized'], 401);
     }
+
+    $basketItems = Basket::with('product')
+        ->where('user_id', $user->id)
+        ->get();
+        
+    return response()->json([
+        'items' => $basketItems,
+        'total' => $basketItems->sum('total_price')
+    ]);
+}
 
     /**
      * Добавить товар в корзину
