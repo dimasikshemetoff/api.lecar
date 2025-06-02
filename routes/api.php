@@ -25,9 +25,9 @@ Route::prefix('v1')->group(function () {
         Route::get('/user', [AuthController::class, 'user']);
         
         // Order routes
-        Route::apiResource('orders', OrderController::class)->except(['update']);
-        Route::put('/orders/{order}/status', [OrderController::class, 'update'])->name('orders.status');
+        
     });
-    
+    Route::apiResource('orders', OrderController::class)->except(['update']);
+        Route::put('/orders/{order}/status', [OrderController::class, 'update'])->name('orders.status');
     Route::apiResource('products', ProductController::class);
 });
