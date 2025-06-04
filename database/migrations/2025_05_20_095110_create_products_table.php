@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('description');
             $table->decimal('newprice', 10);
             $table->boolean('isfavorite')->default(false);
+            $table->boolean('prescription_required')->default(false); // Новое поле
             $table->decimal('oldprice', 10)->nullable();
             $table->timestamps();
         });

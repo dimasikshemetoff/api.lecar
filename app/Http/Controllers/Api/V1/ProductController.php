@@ -24,7 +24,6 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            // 'articul' => 'required|string|size:6|unique:products',
             'title' => 'required|string|max:255',
             'category' => 'required|string|max:255',
             'image' => 'nullable|string',
@@ -32,6 +31,7 @@ class ProductController extends Controller
             'description' => 'required|string',
             'newprice' => 'required|numeric|min:0',
             'isfavorite' => 'boolean',
+            'prescription_required' => 'boolean',
             'oldprice' => 'nullable|numeric|min:0',
         ]);
 
@@ -48,6 +48,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'newprice' => $request->newprice,
             'isfavorite' => $request->isfavorite ?? false,
+            'prescription_required' => $request->prescription_required ?? false,
             'oldprice' => $request->oldprice,
         ]);
 
@@ -87,6 +88,7 @@ class ProductController extends Controller
             'description' => 'sometimes|string',
             'newprice' => 'sometimes|numeric|min:0',
             'isfavorite' => 'boolean',
+            'prescription_required' => 'boolean',
             'oldprice' => 'nullable|numeric|min:0',
         ]);
 
